@@ -49,10 +49,10 @@ public class Jasa_Laundry{
                 do{
 	                System.out.print("ALAMAT TEMPAT TINGGAL : ");
 	                alamat = input.nextLine();
-	                if (!alamat.matches("[a-zA-Z\\s]+")) {
+	                if (!alamat.matches("[A-Za-z0-9\\s.,/]+")) {
 		              System.out.println("Masukan Yang Anda beri, Salah\n");
 		            }
-	            } while (!alamat . matches ("[a-zA-Z\\s]+"));
+	            } while (!alamat . matches ("[A-Za-z0-9\\s.,/]+"));
                 String pilihan_jenis_Paket="";
                 double harga_paket=0;
                 String bbb ="";
@@ -181,15 +181,21 @@ public class Jasa_Laundry{
                 while (pilih_kembali.equalsIgnoreCase(yes)); 
                 System.out.println("");
                 double berat ;
-                do {
+                try{
                     System.out.print("MASUKKAN BERAT PAKAIAN DALAM SATUAN (KG) : ");
                     berat = input.nextDouble();
                     input.nextLine();
-                    if (berat > 200.0 || berat < 0.0) {
-                          System.out.println("Berat tidak boleh lebih dari 200KG\n");
-                        }
-                } while (berat > 200.0 || berat < 0.0);
-
+                    if (berat > 200.0) {
+                        System.out.println("Berat tidak boleh lebih dari 200KG\n");
+                    }else if (berat <= 0.0) {
+                        System.out.println("Berat tidak boleh kurang dari 0 KG\n");
+                        
+                    }
+                } catch (Exception e){
+                    System.out.println("Masukan harus berupa Angka");
+                    System.out.println("TERIMAKASIH :)");
+                    break;
+                }
                 String dapat_diskon = "";
                 double diskon = 0;
                 double harga_kiloan = 0;
@@ -270,7 +276,7 @@ public class Jasa_Laundry{
                        
 	                }
 	            }while (!lanjut_Pembayaran.equals("y") && !lanjut_Pembayaran.equals("n"));
-
+                System.out.println("TERIMAKASIH :)");
                 aaa = "no";
             }else{
                 System.out.println("\n----------------------------------------------------");
